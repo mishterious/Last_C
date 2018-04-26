@@ -1,0 +1,31 @@
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  {{ error }}
+  {{ customers }}
+  <a [routerLink]="['/all']" >Home</a>
+
+  <h2>Let's eat! :</h2>
+  <p>Reviews for {{ rest.name }}</p>
+  <button (click)="deleteByID(rest._id)">DELETE</button>
+  <button [routerLink]="['/rewrite/', rest._id , rest.name]">Read reviews</button>
+  <h4 style="color: red;">{{ error }}</h4>
+  <p> {{ rest | json }} </p>
+  <table>
+    <tr>
+      <th>Reviewer</th>
+      <th>Stars</th>  
+      <th>Reviews</th>
+    </tr>
+    <tr *ngFor="let myrest of rest.messages">
+      <td>{{ myrest.name }}</td>
+      <td>{{ myrest.stars}}</td>
+      <td>{{ myrest.review }} </td>
+      <td><button (click)="deleteByReviewID(myrest._id)">DELETE</button></td>
+    </tr>
+
+  </table>
+
+</div>
+<router-outlet></router-outlet> 
